@@ -18,8 +18,21 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"],
+      "@buttons/*": ["./src/components/shared/buttons/*"],
+      "@icons/*": ["./src/components/shared/icons/*"],
+      "@modals/*": ["./src/components/modals/*"],
+      "@page-related/*": ["./src/components/page-related/*"],
+      "@containers/*": ["./src/components/shared/containers/*"],
+      "@layout-related/*": ["./src/components/layout-related/*"],
+      "@shared/*": ["./src/components/shared/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@api/*": ["./src/libs/redux/api/*"],
+      "@features/*": ["./src/libs/redux/features/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": [
