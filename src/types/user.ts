@@ -1,4 +1,4 @@
-import { TUserRole, TUserStatus } from "@/constants/user.constant";
+import { TUserRole, TUserStatus } from "@/constants/user";
 
 export type TAddress = {
   address: string;

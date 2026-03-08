@@ -1,4 +1,4 @@
-import { TCouponStatus, TDiscountType } from "@/constants/coupon.constant";
+import { TCouponStatus, TDiscountType } from "@/constants/coupon";
 
 export type TCoupon = {
   id: string;

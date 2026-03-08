@@ -1,4 +1,4 @@
-import { TProductStatus } from "@/constants/product.constant";
+import { TProductStatus } from "@/constants/product";
 
 export type TProductSpecification = {
   key: string;

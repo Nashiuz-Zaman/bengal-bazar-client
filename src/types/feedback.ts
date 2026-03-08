@@ -1,4 +1,4 @@
-import { TFeedbackStatus, TFeedbackType } from "@/constants/feedback.constant";
+import { TFeedbackStatus, TFeedbackType } from "@/constants/feedback";
 
 export type TFeedback = {
   id: string;
