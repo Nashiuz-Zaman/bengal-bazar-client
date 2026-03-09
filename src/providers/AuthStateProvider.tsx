@@ -1,38 +1,21 @@
 "use client";
 
-import {
-  createContext,
-  useEffect,
-  useState,
-  ReactNode,
-  Dispatch,
-  SetStateAction,
-} from "react";
-import { useGetCurrentUserQuery } from "@/libs/redux/api/user.api";
-export interface IUser {
-  _id: string;
-  email: string;
-}
+import { createContext, ReactNode } from "react";
+import { useGetCurrentUserQuery } from "@/libs/redux/apiSlices/auth/authApiSlice";
+import { TUser } from "@/types/user";
 
-// ----------------------------- Types -----------------------------
 export interface IAuthStateContext {
-  user: IUser | null;
+  user: Partial<TUser> | null;
   isLoading: boolean;
-  setUser: Dispatch<SetStateAction<IUser | null>>;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
-  hasFetched: boolean;
+  isError: boolean;
+  role?: string;
 }
 
-// ----------------------------- Context -----------------------------
 export const AuthStateContext = createContext<IAuthStateContext | null>(null);
 
-// ----------------------------- Provider -----------------------------
 export const AuthStateProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<IUser | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasFetched, setHasFetched] = useState(false);
-
-  const { data: res, isLoading: queryLoading } = useGetCurrentUserQuery(
+  // Let RTK Query be the single source of truth
+  const { data, isLoading, isFetching, isError } = useGetCurrentUserQuery(
     undefined,
     {
       refetchOnReconnect: true,
@@ -40,33 +23,17 @@ export const AuthStateProvider = ({ children }: { children: ReactNode }) => {
     },
   );
 
-  useEffect(() => {
-    if (hasFetched) return;
-
-    if (queryLoading) return;
-
-    if (!user && res?.success) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setUser(res?.data);
-    } else {
-      setUser(null);
-    }
-
-    setIsLoading(false);
-    setHasFetched(true);
-  }, [res, queryLoading, hasFetched]);
+  // Derive state directly from the query result
+  // (No useEffect or useState needed!)
+  const user = !isError && data?.data?.user ? data.data.user : null;
+  const isAuthLoading = isLoading || isFetching;
 
   const value: IAuthStateContext = {
     user,
-    isLoading,
-    setUser,
-    setIsLoading,
-    hasFetched,
+    isLoading: isAuthLoading,
+    isError,
+    role: user?.role,
   };
 
-  return (
-    <AuthStateContext.Provider value={value}>
-      {children}
-    </AuthStateContext.Provider>
-  );
+  return <AuthStateContext value={value}>{children}</AuthStateContext>;
 };
