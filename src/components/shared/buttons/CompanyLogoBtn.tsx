@@ -16,13 +16,13 @@ export const CompanyLogoBtn = ({
     orientation === "landscape" ? "/logo-wide.png" : "/logo-tall.png";
 
   return (
-    <Link href="/" className={`inline-block ${className}`}>
+    <Link href="/" className={`inline-block h-[4rem] ${className}`}>
       <Image
         src={logoSrc}
         alt="Lumora Logo"
         width={300}
         height={100}
-        className="object-contain"
+        className="object-contain w-full h-full"
         priority
       />
     </Link>
