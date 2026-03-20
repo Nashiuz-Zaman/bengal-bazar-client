@@ -1,11 +1,8 @@
 import { TUserRole, TUserStatus } from "@/constants/user";
+import { IUserBasic } from "@/types/shared";
 
-export type TUser = {
+export interface IUser extends IUserBasic {
   id: string;
-
-  name: string;
-  email: string;
-  phone?: string | null;
 
   password?: string | null;
   image?: string | null;
@@ -22,10 +19,8 @@ export type TUser = {
 
   createdAt: string;
   updatedAt: string;
-};
+}
 
-export interface IGoogleUser {
-  name: TUser["name"];
-  email: TUser["email"];
-  image: TUser["image"];
+export interface IGoogleUser extends IUserBasic {
+  image: IUser["image"];
 }

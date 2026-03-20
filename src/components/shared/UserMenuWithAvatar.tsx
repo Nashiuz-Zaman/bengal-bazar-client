@@ -3,10 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { useClickOutside } from "@/hooks/useClickOutside";
-import { TUser } from "@/types/user";
+import { IUser } from "@/types/user";
 
 type TUserMenuWithAvatarProps = {
-  userData: Partial<TUser>;
+  userData: Partial<IUser>;
   logoutFunction?: () => void;
   className?: string;
 };

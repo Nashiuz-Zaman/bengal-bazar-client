@@ -13,7 +13,7 @@ export const CenterContainer = ({
 }: ICenterContainerProps) => {
   return (
     <Component
-      className={`mx-auto w-full max-w-300 px-4 sm:px-6 lg:px-8 ${className}`}
+      className={`mx-auto w-full max-w-325 px-4 sm:px-6 lg:px-8 ${className}`}
     >
       {children}
     </Component>

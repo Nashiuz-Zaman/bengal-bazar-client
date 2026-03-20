@@ -1,11 +1,15 @@
 import { TProductStatus } from "@/constants/product";
+import { IMultipleResourceQueryParams } from "@/types/shared";
 
 export type TProductSpecification = {
   key: string;
   value: string;
 };
 
-export type TProduct = {
+// ---------------------------------------------------------
+// PRODUCT
+// ---------------------------------------------------------
+export interface IProduct {
   id: string;
 
   productSlug: string;
@@ -33,10 +37,13 @@ export type TProduct = {
 
   createdAt: string;
   updatedAt: string;
-};
+}
 
 export type TVariantAttributes = Record<string, string>;
 
+// ---------------------------------------------------------
+// PRODUCT Variant
+// ---------------------------------------------------------
 export type TProductVariant = {
   id: string;
 
@@ -59,3 +66,39 @@ export type TProductVariant = {
   createdAt: string;
   updatedAt: string;
 };
+
+// ---------------------------------------------------------
+// SEARCHBAR RESULT PRODUCT
+// Minimal product info for search dropdowns
+// ---------------------------------------------------------
+export interface ISearchbarResultProduct {
+  // Maps to productDisplayName from TProduct
+  title: IProduct["productDisplayName"];
+
+  // We use TProduct["globalImages"] to get the string[] type
+  image: IProduct["globalImages"][number];
+  slug: IProduct["productSlug"];
+  id: IProduct["id"];
+}
+
+// ---------------------------------------------------------
+// PRODUCT FORM PROPS
+// Props for create/edit product forms
+// ---------------------------------------------------------
+export interface IProductFormProps {
+  mode?: "create" | "edit";
+  product?: IProduct;
+}
+
+// ---------------------------------------------------------
+// UPDATE PRODUCT ARGUMENTS
+// Used when updating an existing product
+// ---------------------------------------------------------
+export interface IUpdateProductArgs {
+  id: IProduct["id"];
+  data: Partial<IProduct>;
+}
+
+export interface IProductSearchQueryParams extends IMultipleResourceQueryParams {
+  form?: boolean;
+}

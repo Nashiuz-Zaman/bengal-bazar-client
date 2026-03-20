@@ -17,9 +17,10 @@ export const baseApiSlice = createApi({
     "CustomerSettingsData",
     "CustomerProfileData",
     "Coupons",
-    "GuestCartData",
-    "UserCartData",
+    "Cart",
+    "User",
     "ProductCollectionsAdmin",
     "ReturnRequests",
+    "UsersAdmin",
   ],
 });

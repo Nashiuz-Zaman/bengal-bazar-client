@@ -1,6 +1,5 @@
 "use client";
 import { UserRole } from "@/constants/user";
-
 import { useRouter } from "next/navigation";
 import { useAuthState } from "@/providers/AuthStateProvider";
 import {
@@ -8,15 +7,15 @@ import {
   useLocalLoginMutation,
   useSocialLoginMutation,
   useLogoutMutation,
-} from "@/libs/redux/apiSlices/auth/authApiSlice";
+} from "@api-slices/auth.api.slice";
+import { useRegisterUserMutation } from "@api-slices/user.api.slice";
 import useFirebaseMethods from "./useFirebaseMethods";
-import { useSignupCustomerMutation } from "@/libs/redux/apiSlices/customer/customerApiSlice";
 import { UseFormSetError } from "react-hook-form";
 import { catchAsyncClient } from "@/utils/catchAsyncClient";
 import { showToast } from "@/utils/showToast";
-import { TUser } from "@/types/user";
+import { IUser } from "@/types/user";
 
-const getTargetPath = (userData: TUser) => {
+const getTargetPath = (userData: IUser) => {
   return userData?.role === UserRole.CUSTOMER
     ? "customer"
     : userData?.role === UserRole.ADMIN
@@ -28,8 +27,10 @@ export const useAuthMethods = () => {
   const [login, { isLoading: isLocalLoginLoading }] = useLocalLoginMutation();
   const [logoutTrigger, { isLoading: isLogoutLoading }] = useLogoutMutation();
 
-  const [signup, { isLoading: isSignupUserLoading }] =
-    useSignupCustomerMutation();
+  // Updated to use the correct hook name from your userApiSlice
+  const [register, { isLoading: isSignupUserLoading }] =
+    useRegisterUserMutation();
+
   const [socialLogin, { isLoading: isSocialLoginLoading }] =
     useSocialLoginMutation();
 
@@ -41,9 +42,10 @@ export const useAuthMethods = () => {
   const signupUser = catchAsyncClient(
     async (args) => {
       const data = args?.data;
-      const onSuccess = args?.onSucess;
+      const onSuccess = args?.onSuccess; // Fixed typo 'onSucess'
 
-      const res = await signup(data).unwrap();
+      // Updated to call 'register' instead of 'signup'
+      const res = await register(data).unwrap();
 
       if (res?.success) {
         if (onSuccess && typeof onSuccess === "function") onSuccess();
@@ -84,7 +86,7 @@ export const useAuthMethods = () => {
           message: res?.message,
         });
 
-        router.push(`/${getTargetPath(userData)}`);
+        router.push(`/${getTargetPath(userData as IUser)}`);
       }
     },
     {
@@ -100,7 +102,7 @@ export const useAuthMethods = () => {
     },
   );
 
-  //  Login using google
+  // Login using google
   const loginWithGoogle = catchAsyncClient(async () => {
     const result = await loginGoogle();
 
@@ -120,7 +122,7 @@ export const useAuthMethods = () => {
           message: res?.message,
         });
 
-        router.push(`/${getTargetPath(userData)}`);
+        router.push(`/${getTargetPath(userData as IUser)}`);
       }
     }
   });
@@ -128,7 +130,8 @@ export const useAuthMethods = () => {
   const logout = catchAsyncClient(async () => {
     const res = await logoutTrigger().unwrap();
 
-    if (res.status === "success") {
+    // Check res?.success to match your standard API response pattern
+    if (res?.success) {
       router.replace("/");
       showToast({ message: "Signed Out", position: "top-center" });
     }

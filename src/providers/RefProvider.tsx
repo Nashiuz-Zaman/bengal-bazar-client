@@ -7,6 +7,7 @@ import {
   Dispatch,
   SetStateAction,
   RefObject,
+  useContext,
 } from "react";
 
 export type TRefs = Record<string, RefObject<any> | null>;
@@ -35,4 +36,14 @@ export const RefsProvider = ({
   };
 
   return <RefsContext value={value}>{children}</RefsContext>;
+};
+
+export const useRefState = (): IRefsContext => {
+  const context = useContext(RefsContext);
+
+  if (!context) {
+    throw new Error("useRefs must be used within a <RefsProvider>");
+  }
+
+  return context;
 };

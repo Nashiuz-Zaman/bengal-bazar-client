@@ -1,6 +1,4 @@
-"use client";
-
-import { CloseIcon } from "../icons";
+import { CloseIcon } from "../icons/CloseIcon";
 
 export const CloseBtn = ({
   onClick,
