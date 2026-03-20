@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --breakpoint-2xs: 360px;
+  --breakpoint-xs: 480px;
+  --breakpoint-2md: 850px;
+  --breakpoint-2lg: 1100px;
+  --breakpoint-3xl: 1700px;
+  --breakpoint-4xl: 1920px;
+
+  --text-2xs: 0.625rem;
+  --text-3xs: 0.5rem;
+
+  --color-default-text: #333;
+  --color-primary: #1d8c2f;
+  --color-primary-light: #e8f5e9;
+  --color-primary-dark: #0a3d16;
+
+  /* Secondary (Refreshing Teal) */
+  --color-secondary: #2fb48c;
+
+  /* Tertiary (Warm Amber) */
+  --color-tertiary: #f9a825;
+
+  /* Accent (Coral/Pink for high contrast) */
+  --color-accent: #f06292;
+
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  scrollbar-width: thin;
+  scroll-margin-top: 40px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+button {
+  @apply cursor-pointer!;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-default-text);
+  line-height: 1.5;
+}
+
+@utility scale-on-hover {
+  @apply active:scale-120 lg:hover:scale-120;
+}
+
+@utility primary-classes {
+  @apply bg-primary border border-primary text-white
+         active:bg-primary-dark active:border-primary-dark
+         lg:hover:bg-primary-dark lg:hover:border-primary-dark
+         disabled:hover:bg-primary disabled:hover:border-primary disabled:hover:text-white;
+}
+
+@utility primary-outlined-classes {
+  @apply bg-transparent text-primary border-primary!
+         active:bg-primary/10 lg:hover:bg-primary/10 
+         disabled:hover:bg-transparent;
+}
+
+@utility primary-light-classes {
+  @apply bg-primary-light border border-primary-light text-white
+         active:bg-primary active:border-primary active:text-white
+         lg:hover:bg-primary lg:hover:border-primary lg:hover:text-white
+         disabled:hover:bg-primary-light disabled:hover:border-primary-light disabled:hover:text-white;
+}
+
+@utility danger-classes {
+  @apply bg-red-600 border border-red-600 text-white
+         hover:bg-red-500 hover:border-red-500
+         disabled:hover:bg-red-600 disabled:hover:border-red-600 disabled:hover:text-white;
+}
+
+@utility success-classes {
+  @apply bg-green-600 border border-green-600 text-white
+         hover:bg-green-500 hover:border-green-500
+         disabled:hover:bg-green-600 disabled:hover:border-green-600 disabled:hover:text-white;
+}
+
+@utility system-classes {
+  @apply bg-neutral-100 border border-neutral-200 text-neutral-800
+         hover:bg-neutral-200 hover:border-neutral-300
+         disabled:hover:bg-neutral-100 disabled:hover:border-neutral-200 disabled:hover:text-neutral-800;
+}
+
+@utility gray-outlined-classes {
+  @apply bg-white border border-neutral-200
+         hover:bg-neutral-100
+         disabled:hover:bg-white disabled:hover:border-neutral-200;
+}
+
+@utility link-classes {
+  @apply text-blue-500 hover:text-blue-700 hover:underline;
+}
+
+@utility xy-center {
+  @apply top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2;
+}
+
+@utility x-center {
+  @apply left-1/2 -translate-x-1/2;
+}
+
+@utility y-center {
+  @apply top-1/2 -translate-y-1/2;
+}
+
+@utility bg-center-cover {
+  @apply bg-cover bg-center bg-no-repeat;
+}
+
+@utility no-shaking {
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@utility no-arrow {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button::selection {
+  @apply bg-transparent;
+}
+
+a:link::selection,
+a:visited::selection {
+  color: auto;
+  @apply bg-transparent;
 }
