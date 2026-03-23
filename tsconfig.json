@@ -29,7 +29,7 @@
       "@layout-related/*": ["./src/components/layout-related/*"],
       "@shared/*": ["./src/components/shared/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@api/*": ["./src/libs/redux/api/*"],
+      "@api-slices/*": ["./src/libs/redux/api-slices/*"],
       "@features/*": ["./src/libs/redux/features/*"],
       "@providers/*": ["./src/providers/*"],
       "@utils/*": ["./src/utils/*"]
