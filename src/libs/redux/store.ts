@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { baseApiSlice } from "@/libs/redux/api-slices/base.api.slice";
+import { baseApiSlice } from "./api-slices/base.api.slice";
+import backdropReducer from "./slices/backdropSlice";
 
 export const makeStore = () =>
   configureStore({
     reducer: {
+      backdrop: backdropReducer,
       [baseApiSlice.reducerPath]: baseApiSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>

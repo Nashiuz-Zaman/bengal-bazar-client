@@ -1,23 +1,34 @@
 "use client";
 
 import React, { useMemo } from "react";
-import Link from "next/link";
-import { HeaderProductsSearchbar } from "@layout-related/site/header/HeaderProductsSearchbar";
+import { HeaderProductsSearchbar } from "./blocks/HeaderProductsSearchbar";
 import { CartBtn } from "@buttons/CartBtn";
 import { UserMenuWithoutAvatar } from "@shared/UserMenuWithoutAvatar";
 import { UserMenuWithAvatar } from "@shared/UserMenuWithAvatar";
-import { SearchbarProductCard } from "./SearchbarProductCard";
+import { SearchbarProductCard } from "./blocks/SearchbarProductCard";
 import { useAuthMethods } from "@/hooks/useAuthMethods";
 import { useAuthState } from "@/providers/AuthStateProvider";
 import { ISearchbarResultProduct } from "@/types/product";
 import { useLazySearchbarResultsQuery } from "@api-slices/product.api.slice";
 import { UserRole } from "@/constants/user";
 import { useCartState } from "@/providers/CartStateProvider";
+import { LinkBtnTrans } from "@buttons/LinkBtnTrans";
+import { LoginIcon } from "@icons/LoginIcon";
+import { CompanyLogoBtn } from "@buttons/CompanyLogoBtn";
+import { OuterContainer } from "@containers/OuterContainer";
+import { BREAKPOINTS, useMediaQuery } from "@/hooks/useMediaQuery";
+import dynamic from "next/dynamic";
+import { categories } from "@/dummy-data/nav";
 
-export const HeaderSearchAvatarAuthOptions = () => {
+const MobileCategoryNav = dynamic(() =>
+  import("./blocks/MobileCategoryNav").then((mod) => mod.MobileCategoryNav),
+);
+
+export const HeaderTopbar = () => {
   const { logout } = useAuthMethods();
   const { user } = useAuthState();
   const { cart } = useCartState();
+  const is2md = useMediaQuery(BREAKPOINTS.max["2md"]!);
 
   // 1. Auth & Role Logic
   const { isAdmin, isCustomer, isAuthenticated } = useMemo(() => {
@@ -55,26 +66,32 @@ export const HeaderSearchAvatarAuthOptions = () => {
   );
 
   return (
-    <>
+    <OuterContainer className="h-27 2md:h-20 grid grid-rows-2 grid-cols-3 2md:grid-cols-[1fr_2fr_1fr] 2md:grid-rows-1 items-center border-b border-neutral-100">
+      {is2md && <MobileCategoryNav categories={categories} />}
+
+      <CompanyLogoBtn className="mx-auto! 2md:ml-0!" />
+
       {/* Desktop search bar */}
       <HeaderProductsSearchbar<ISearchbarResultProduct>
         results={results}
         renderResult={renderResult}
         showIcon
         trigger={triggerSearch}
+        className="lg:max-w-160 order-3 col-span-3 2md:col-span-1 2md:order-2"
         modalClassName="productSearchbarModal"
       />
 
-      <div className="ml-auto flex items-center gap-4 font-medium text-sm">
+      <div className="ml-auto flex items-center gap-4 font-medium text-sm order-2 2md:order-3">
         {/* Auth / User menu */}
         {!isAuthenticated ? (
           <>
-            <Link className="hover:underline" href="/auth/login">
-              Login
-            </Link>
-            <Link className="hover:underline" href="/auth/signup">
-              Sign Up
-            </Link>
+            <LinkBtnTrans
+              className="hover:underline flex-col items-center! gap-1!"
+              href="/login"
+            >
+              <LoginIcon className="text-xl" />
+              <span className="hidden lg:inline-block">Sign in</span>
+            </LinkBtnTrans>
           </>
         ) : (
           <>
@@ -87,6 +104,6 @@ export const HeaderSearchAvatarAuthOptions = () => {
 
         <CartBtn itemsQty={cart?.totalItemQty || 0} />
       </div>
-    </>
+    </OuterContainer>
   );
 };

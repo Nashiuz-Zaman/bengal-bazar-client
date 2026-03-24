@@ -2,11 +2,11 @@ import { CloseIcon } from "../icons/CloseIcon";
 
 export const CloseBtn = ({
   onClick,
-  modifyClasses = "",
+  className = "",
   title = "Close",
 }: {
   onClick?: () => void;
-  modifyClasses?: string;
+  className?: string;
   title?: string;
 }) => {
   return (
@@ -14,10 +14,10 @@ export const CloseBtn = ({
       type="button"
       title={title}
       aria-label="Close button"
-      className={`ml-auto w-max block text-3xl text-textPrimary cursor-pointer ${modifyClasses}`}
+      className={`ml-auto w-max block text-3xl cursor-pointer ${className}`}
       onClick={onClick}
     >
-      <CloseIcon />
+      <CloseIcon className="text-inherit [font-size:inherit]" />
     </button>
   );
 };

@@ -2,27 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
-import { HamburgerIcon } from "@/components/shared/icons/HamburgerIcon";
-import { CaretRightIcon } from "@/components/shared/icons/CaretRightIcon";
+import { HamburgerIcon } from "@icons/HamburgerIcon";
+import { CaretRightIcon } from "@icons/CaretRightIcon";
+import { ICategory, ICategoryNavProps } from "@/types/category";
 
-interface ISubCategory {
-  id: string;
-  subCategoryName: string;
-  subCategoryDisplayName: string;
-  categoryId: string;
-}
-interface ICategory {
-  id: string;
-  categoryName: string;
-  categoryDisplayName: string;
-  icon?: string;
-  subCategories?: ISubCategory[];
-}
-interface ICatNavProps {
-  categories: ICategory[];
-}
-
-export const CategoryDropdown = ({ categories }: ICatNavProps) => {
+export const DesktopCategoryNav = ({ categories }: ICategoryNavProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<ICategory | null>(null);
 
@@ -36,7 +20,7 @@ export const CategoryDropdown = ({ categories }: ICatNavProps) => {
       }}
     >
       {/* TRIGGER */}
-      <button className="flex items-center gap-2 px-3 py-2 rounded-md bg-neutral-50 group-hover:bg-primary-light transition-colors duration-200">
+      <button className="flex items-center gap-2 px-3 py-2 rounded-md bg-neutral-50 group-hover:bg-neutral-100 transition-colors duration-200">
         <HamburgerIcon />
         <span className="text-sm font-semibold">All Categories</span>
       </button>
@@ -65,11 +49,11 @@ export const CategoryDropdown = ({ categories }: ICatNavProps) => {
                 <Link
                   href={`/category/${cat.categoryName}`}
                   className={`
-                    flex items-center justify-between px-4 py-3 transition-all duration-200
+                    flex items-center justify-between px-4 py-4 transition-all duration-300
                     ${
                       activeCategory?.id === cat.id
-                        ? "bg-white text-primary shadow-sm translate-x-1"
-                        : "hover:bg-primary-light/50 text-neutral-700"
+                        ? "bg-white text-primary pl-6"
+                        : ""
                     }
                   `}
                 >
@@ -78,18 +62,19 @@ export const CategoryDropdown = ({ categories }: ICatNavProps) => {
                       <Icon
                         icon={cat.icon}
                         width={20}
-                        className={`transition-colors ${activeCategory?.id === cat.id ? "text-secondary" : "text-neutral-400 group-hover:text-primary"}`}
+                        className={`transition-colors`}
                       />
                     )}
                     <span className="text-sm font-medium">
                       {cat.categoryDisplayName}
                     </span>
                   </div>
+
                   {cat.subCategories?.length ? (
                     <CaretRightIcon
                       className={
                         activeCategory?.id === cat.id
-                          ? "text-primary"
+                          ? ""
                           : "text-neutral-300"
                       }
                     />
@@ -103,8 +88,8 @@ export const CategoryDropdown = ({ categories }: ICatNavProps) => {
           <div className="w-1/2 py-5 px-6 bg-white">
             {activeCategory ? (
               <>
-                <h3 className="text-[11px] tracking-wider font-bold text-secondary uppercase mb-4 flex items-center gap-2">
-                  <span className="w-4 h-0.5 bg-tertiary rounded-full"></span>
+                <h3 className="text-xs tracking-wider font-bold text-secondary uppercase mb-4 flex items-center gap-2">
+                  <span className="w-4 h-0.5 block bg-tertiary rounded-full"></span>
                   {activeCategory.categoryDisplayName}
                 </h3>
                 <div className="flex flex-col gap-1">
@@ -112,7 +97,7 @@ export const CategoryDropdown = ({ categories }: ICatNavProps) => {
                     <Link
                       key={sub.id}
                       href={`/category/${activeCategory.categoryName}/${sub.subCategoryName}`}
-                      className="text-sm text-neutral-600 hover:text-primary hover:bg-primary-light px-3 py-2 rounded-lg transition-all duration-200"
+                      className="text-sm hover:bg-primary/85 hover:text-white px-3 py-2 rounded-lg transition-all duration-300"
                     >
                       {sub.subCategoryDisplayName}
                     </Link>

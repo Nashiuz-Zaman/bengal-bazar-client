@@ -13,7 +13,8 @@ export const OuterContainer = ({
 }: IOuterContainerProps) => {
   return (
     <Component
-      className={`mx-auto w-full max-w-640 px-4 sm:px-6 lg:px-8 ${className}`}
+      style={{ maxWidth: "2560px" }}
+      className={`mx-auto w-full px-4 sm:px-6 lg:px-8 ${className}`}
     >
       {children}
     </Component>
