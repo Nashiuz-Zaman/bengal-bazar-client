@@ -2,23 +2,15 @@ export const LoginIcon = ({ className = "" }: { className?: string }) => {
   return (
     <div className={className}>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
         className="w-[1em] aspect-square"
-        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
       >
         <path
           fill="currentColor"
-          d="M28 4H12a2 2 0 0 0-2 2h18v24H12v-9.8h-2V30a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"
-          className="clr-i-outline clr-i-outline-path-1"
+          d="M12.48 20q-.213 0-.356-.143t-.143-.357t.143-.357t.357-.143h5.904q.23 0 .423-.192t.192-.424V5.616q0-.231-.192-.424T18.384 5h-5.903q-.214 0-.357-.143t-.143-.357t.143-.357t.357-.143h5.904q.69 0 1.153.463T20 5.616v12.769q0 .69-.462 1.153T18.384 20zm.407-7.5H4.518q-.213 0-.356-.143T4.019 12t.144-.357t.356-.143h8.368l-1.972-1.971q-.14-.14-.15-.338q-.01-.199.15-.364t.354-.168q.195-.003.36.162l2.613 2.613q.243.243.243.566t-.243.566l-2.613 2.613q-.146.146-.346.153t-.364-.159q-.159-.165-.156-.357t.161-.35z"
         ></path>
-        <path
-          fill="currentColor"
-          d="M15.12 18.46a1 1 0 1 0 1.41 1.41l5.79-5.79l-5.78-5.79a1 1 0 0 0-1.41 1.41L18.5 13H4a1 1 0 0 0-1 1a1 1 0 0 0 1 1h14.5Z"
-          className="clr-i-outline clr-i-outline-path-2"
-        ></path>
-        <path fill="none" d="M0 0h36v36H0z"></path>
       </svg>
     </div>
   );
 };
-

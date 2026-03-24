@@ -20,8 +20,8 @@ export const CartBtn = ({
         </p>
       )}
 
-      <LinkBtnTrans href={href} className="flex flex-col items-center gap-0!">
-        <CartIcon className="text-2xl" />
+      <LinkBtnTrans href={href} className="flex flex-col items-center gap-1!">
+        <CartIcon className="text-3xl" />
         <span className="hidden lg:inline-block">Cart</span>
       </LinkBtnTrans>
     </div>

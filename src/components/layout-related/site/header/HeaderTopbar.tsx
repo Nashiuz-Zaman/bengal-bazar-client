@@ -81,7 +81,7 @@ export const HeaderTopbar = () => {
         modalClassName="productSearchbarModal"
       />
 
-      <div className="ml-auto flex items-center gap-4 font-medium text-sm order-2 2md:order-3">
+      <div className="ml-auto flex items-stretch gap-4 font-medium text-sm order-2 2md:order-3">
         {/* Auth / User menu */}
         {!isAuthenticated ? (
           <>
@@ -89,7 +89,7 @@ export const HeaderTopbar = () => {
               className="hover:underline flex-col items-center! gap-1!"
               href="/login"
             >
-              <LoginIcon className="text-xl" />
+              <LoginIcon className="text-3xl" />
               <span className="hidden lg:inline-block">Sign in</span>
             </LinkBtnTrans>
           </>
