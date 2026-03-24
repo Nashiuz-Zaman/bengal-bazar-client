@@ -1,18 +1,25 @@
 "use client";
 
-import Link from "next/link";
+import { LinkBtnTrans } from "@buttons/LinkBtnTrans";
 
 interface ICompanyLogoBtnProps {
   className?: string;
+  onClick?: (
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+  ) => void;
 }
 
-export const CompanyLogoBtn = ({ className = "" }: ICompanyLogoBtnProps) => {
+export const CompanyLogoBtn = ({
+  className = "",
+  onClick,
+}: ICompanyLogoBtnProps) => {
   return (
-    <Link
+    <LinkBtnTrans
+      onClick={onClick}
       href="/"
       className={`tracking-tighter w-max uppercase font-semibold ${className}`}
     >
       Bengal Bazar
-    </Link>
+    </LinkBtnTrans>
   );
 };

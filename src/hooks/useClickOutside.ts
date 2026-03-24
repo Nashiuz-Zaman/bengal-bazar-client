@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export const useClickOutside = (
   condition: boolean,
-  callbackFunc: (event: MouseEvent) => void
+  callbackFunc: (event: MouseEvent) => void,
 ) => {
   useEffect(() => {
     let clickEventTimer: ReturnType<typeof setTimeout>;
@@ -24,5 +24,3 @@ export const useClickOutside = (
     };
   }, [condition, callbackFunc]);
 };
-
-

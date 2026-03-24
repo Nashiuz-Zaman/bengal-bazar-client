@@ -95,11 +95,11 @@ export const HeaderProductsSearchbar = <T,>({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full max-w-160 text-neutral-500  ${className}`}
+      className={`relative w-full mx-auto ${className}`}
     >
       <form
         onSubmit={handleSubmit}
-        className="flex w-full rounded-full! overflow-hidden items-center text-inherit bg-neutral-100"
+        className="flex w-full rounded-full! overflow-hidden items-center text-inherit bg-neutral-100 "
       >
         {showIcon && (
           <ButtonBtnTrans

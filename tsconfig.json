@@ -30,7 +30,7 @@
       "@shared/*": ["./src/components/shared/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@api-slices/*": ["./src/libs/redux/api-slices/*"],
-      "@features/*": ["./src/libs/redux/features/*"],
+      "@slices/*": ["./src/libs/redux/slices/*"],
       "@providers/*": ["./src/providers/*"],
       "@utils/*": ["./src/utils/*"]
     }

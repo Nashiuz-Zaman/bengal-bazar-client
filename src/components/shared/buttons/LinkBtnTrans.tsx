@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { MouseEvent, AnchorHTMLAttributes } from "react";
+import { AnchorHTMLAttributes } from "react";
 
 interface ILinkBtnTransProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  onClick?: (e: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
+  onClick?: (
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+  ) => void;
   isExternal?: boolean;
 }
 
@@ -23,7 +25,7 @@ export const LinkBtnTrans = ({
   `;
 
   const handleClick = (
-    e: MouseEvent<HTMLAnchorElement | HTMLButtonElement>
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
   ) => {
     e.stopPropagation();
     onClick?.(e);
