@@ -22,6 +22,7 @@ import { ReduxProvider } from "@/providers/ReduxProvider";
 import { AuthStateProvider } from "@/providers/AuthStateProvider";
 import { RefsProvider } from "@/providers/RefProvider";
 import { CartStateProvider } from "@/providers/CartStateProvider";
+import { Backdrop } from "@/components/shared/Backdrop";
 
 export default async function RootLayout({
   children,
@@ -31,7 +32,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} text-neutral-800`}>
-        <div className="mx-auto max-w-640 w-full min-h-screen overflow-x-hidden overflow-y-auto">
+        <div
+          style={{ maxWidth: "2560px", width: "100%" }}
+          className="mx-auto min-h-screen"
+        >
           <ReduxProvider>
             <AuthStateProvider>
               <CartStateProvider>
@@ -53,7 +57,8 @@ export default async function RootLayout({
                     {children}
 
                     {/* All modals will be injected here */}
-                    <div id="modal-root" />
+                    <Backdrop />
+                    <div className="relative z-4" id="modal-root" />
                   </GSAPProvider>
                 </RefsProvider>
               </CartStateProvider>

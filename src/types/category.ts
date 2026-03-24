@@ -12,3 +12,7 @@ export interface ICategory {
   icon: string;
   subCategories: ISubCategory[];
 }
+
+export interface ICategoryNavProps {
+  categories: ICategory[];
+}

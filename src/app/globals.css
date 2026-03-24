@@ -28,6 +28,18 @@
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
+@media (min-width: 1920px) {
+  html {
+    font-size: 120% !important;
+  }
+}
+
+@media (min-width: 2200px) {
+  html {
+    font-size: 150% !important;
+  }
+}
+
 * {
   scrollbar-width: thin;
   scroll-margin-top: 40px;
@@ -46,10 +58,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  color: var(--color-default-text);
-  line-height: 1.5;
-}
 
 @utility scale-on-hover {
   @apply active:scale-120 lg:hover:scale-120;

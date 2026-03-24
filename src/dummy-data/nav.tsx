@@ -83,7 +83,7 @@ export const categories: ICategory[] = [
     id: "cat_4",
     categoryName: "beauty",
     categoryDisplayName: "Beauty & Personal Care",
-    icon: "mdi:cosmetic-brush",
+    icon: "map:beauty-salon",
     subCategories: [
       {
         id: "sub_10",
