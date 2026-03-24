@@ -5,8 +5,8 @@ export interface IHeroBanner {
   subtitle: string;
   btnPrimary: string;
   btnSecondary: string;
-  image: string; // Your 2560px webp paths
-  themeColor: string; // Useful for button or badge styling
+  image: string; 
+  themeColor: string; 
 }
 
 export const heroBanners: IHeroBanner[] = [

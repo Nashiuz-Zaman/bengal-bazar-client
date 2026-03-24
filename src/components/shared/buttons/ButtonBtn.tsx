@@ -31,11 +31,11 @@ export const ButtonBtn = ({
 
   const allClasses = `
     focus:outline-none border border-transparent flex items-center justify-center w-max
-    transition-all rounded-md text-center
+    transition-all rounded-2xl text-center
     cursor-pointer active:scale-95
     disabled:opacity-60 disabled:scale-100 disabled:cursor-not-allowed
     relative gap-2
-    px-8 py-3
+    px-8 py-4
     ${className}
   `;
 

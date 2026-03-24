@@ -18,7 +18,7 @@ import { CompanyLogoBtn } from "@buttons/CompanyLogoBtn";
 import { OuterContainer } from "@containers/OuterContainer";
 import { BREAKPOINTS, useMediaQuery } from "@/hooks/useMediaQuery";
 import dynamic from "next/dynamic";
-import { categories } from "@/dummy-data/nav";
+import { categories } from "@/data/nav";
 
 const MobileCategoryNav = dynamic(() =>
   import("./blocks/MobileCategoryNav").then((mod) => mod.MobileCategoryNav),
