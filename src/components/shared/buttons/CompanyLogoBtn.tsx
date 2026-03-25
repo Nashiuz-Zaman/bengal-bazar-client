@@ -17,9 +17,9 @@ export const CompanyLogoBtn = ({
     <LinkBtnTrans
       onClick={onClick}
       href="/"
-      className={`tracking-wider bg-linear-to-br from-primary to-primary-dark bg-clip-text text-transparent font-bold! inline-block w-max uppercase ${className}`}
+      className={`md:tracking-wider bg-linear-to-br from-primary to-primary-dark bg-clip-text text-transparent font-bold! inline-block  uppercase leading-none ${className}`}
     >
-      Bengal Bazar
+      Bengal <br className="xs:hidden"/> Bazar
     </LinkBtnTrans>
   );
 };

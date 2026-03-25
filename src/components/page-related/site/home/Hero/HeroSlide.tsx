@@ -36,11 +36,7 @@ export const HeroSlide = ({ banner }: IHeroSlideProps) => {
 
           {/* Headline with Conditional Highlights */}
           <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-4 md:mb-6 drop-shadow-xl">
-            {banner.title.split(" ").map((word, i) => (
-              <span key={i} className={word === "Fresh" ? "text-primary" : ""}>
-                {word}{" "}
-              </span>
-            ))}
+            {banner.title}
           </h1>
 
           {/* Subtext */}
