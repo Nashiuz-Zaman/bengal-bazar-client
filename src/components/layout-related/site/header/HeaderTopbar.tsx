@@ -69,7 +69,7 @@ export const HeaderTopbar = () => {
     <OuterContainer className="h-27 2md:h-20 grid grid-rows-2 grid-cols-3 2md:grid-cols-[1fr_2fr_1fr] 2md:grid-rows-1 items-center border-b border-neutral-100">
       {is2md && <MobileCategoryNav categories={categories} />}
 
-      <CompanyLogoBtn className="mx-auto! 2md:ml-0!" />
+      <CompanyLogoBtn className="mx-auto! 2md:ml-0! text-xl" />
 
       {/* Desktop search bar */}
       <HeaderProductsSearchbar<ISearchbarResultProduct>

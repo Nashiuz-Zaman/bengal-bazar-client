@@ -18,7 +18,7 @@ export const HeroSlide = ({ banner }: IHeroSlideProps) => {
         priority
         className="object-cover object-[50%_35%] saturate-120 brightness-115"
         sizes="100vw"
-        quality={90}
+        quality={75}
       />
 
       {/* Gradient Overlay for Text Contrast */}
