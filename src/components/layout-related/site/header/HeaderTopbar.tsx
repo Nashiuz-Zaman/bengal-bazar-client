@@ -11,7 +11,6 @@ import { useAuthState } from "@/providers/AuthStateProvider";
 import { ISearchbarResultProduct } from "@/types/product";
 import { useLazySearchbarResultsQuery } from "@api-slices/product.api.slice";
 import { UserRole } from "@/constants/user";
-import { useCartState } from "@/providers/CartStateProvider";
 import { LinkBtnTrans } from "@buttons/LinkBtnTrans";
 import { LoginIcon } from "@icons/LoginIcon";
 import { CompanyLogoBtn } from "@buttons/CompanyLogoBtn";
@@ -27,7 +26,7 @@ const MobileCategoryNav = dynamic(() =>
 export const HeaderTopbar = () => {
   const { logout } = useAuthMethods();
   const { user } = useAuthState();
-  const { cart } = useCartState();
+
   const is2md = useMediaQuery(BREAKPOINTS.max["2md"]!);
 
   // 1. Auth & Role Logic
@@ -102,7 +101,7 @@ export const HeaderTopbar = () => {
           </>
         )}
 
-        <CartBtn itemsQty={cart?.totalItemQty || 0} />
+        <CartBtn itemsQty={0} />
       </div>
     </OuterContainer>
   );
