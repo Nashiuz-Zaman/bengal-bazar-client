@@ -21,7 +21,6 @@ import GSAPProvider from "@/providers/GsapProvider";
 import { ReduxProvider } from "@/providers/ReduxProvider";
 import { AuthStateProvider } from "@/providers/AuthStateProvider";
 import { RefsProvider } from "@/providers/RefProvider";
-import { CartStateProvider } from "@/providers/CartStateProvider";
 import { Backdrop } from "@/components/shared/Backdrop";
 
 export default async function RootLayout({
@@ -38,30 +37,28 @@ export default async function RootLayout({
         >
           <ReduxProvider>
             <AuthStateProvider>
-              <CartStateProvider>
-                <RefsProvider>
-                  <GSAPProvider>
-                    <ToastContainer
-                      position="top-center"
-                      autoClose={2000}
-                      transition={Zoom}
-                      hideProgressBar
-                      newestOnTop
-                      closeOnClick
-                      rtl={false}
-                      pauseOnFocusLoss
-                      draggable
-                      pauseOnHover
-                      theme="light"
-                    />
-                    {children}
+              <RefsProvider>
+                <GSAPProvider>
+                  <ToastContainer
+                    position="top-center"
+                    autoClose={2000}
+                    transition={Zoom}
+                    hideProgressBar
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                  />
+                  {children}
 
-                    {/* All modals will be injected here */}
-                    <Backdrop />
-                    <div className="relative z-4" id="modal-root" />
-                  </GSAPProvider>
-                </RefsProvider>
-              </CartStateProvider>
+                  {/* All modals will be injected here */}
+                  <Backdrop />
+                  <div className="relative z-4" id="modal-root" />
+                </GSAPProvider>
+              </RefsProvider>
             </AuthStateProvider>
           </ReduxProvider>
         </div>
