@@ -165,14 +165,14 @@ export const AuthForm = ({
         {mode === "signup" ? (
           <p className="text-center text-sm text-neutral-500">
             Already have an account?{" "}
-            <Link href="/auth/login" className="text-purple-600 font-medium">
+            <Link href="/login" className="text-purple-600 font-medium">
               Login
             </Link>
           </p>
         ) : (
           <p className="text-center text-sm text-neutral-500">
             Don’t have an account?{" "}
-            <Link href="/auth/signup" className="text-purple-600 font-medium">
+            <Link href="/signup" className="text-purple-600 font-medium">
               Create one
             </Link>
           </p>
