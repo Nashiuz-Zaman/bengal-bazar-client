@@ -1,5 +1,9 @@
+import { HeroSection } from "@page-related/site/home/Hero/HeroSection";
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center"></div>
+    <>
+      <HeroSection />
+    </>
   );
 }

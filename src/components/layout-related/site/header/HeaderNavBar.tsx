@@ -5,7 +5,7 @@ import { PromoMarquee } from "./blocks/PromoMarquee";
 import { DesktopLinks } from "./blocks/DesktopLinks";
 import dynamic from "next/dynamic";
 import { BREAKPOINTS, useMediaQuery } from "@/hooks/useMediaQuery";
-import { categories } from "@/dummy-data/nav";
+import { categories } from "@/data/nav";
 
 // Lazy load both versions
 const DesktopCategoryNav = dynamic(() =>

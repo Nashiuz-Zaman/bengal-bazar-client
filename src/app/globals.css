@@ -11,19 +11,21 @@
   --text-2xs: 0.625rem;
   --text-3xs: 0.5rem;
 
-  --color-default-text: #333;
-  --color-primary: #1d8c2f;
-  --color-primary-light: #e8f5e9;
-  --color-primary-dark: #0a3d16;
+  --color-default-text: #1e293b;
 
-  /* Secondary (Refreshing Teal) */
-  --color-secondary: #2fb48c;
+  /* Primary (The Emerald Anchor) */
+  --color-primary: #10b981; /* emerald-500 */
+  --color-primary-light: #ecfdf5; /* emerald-50: Ultra-light mint for soft backgrounds */
+  --color-primary-dark: #064e3b; /* emerald-900: Deep, rich forest for high-contrast text/overlays */
+
+  /* Secondary (Refreshing Cyan/Teal) */
+  --color-secondary: #06b6d4; /* cyan-500: This cooler cyan creates a beautiful "water/fresh" contrast. */
 
   /* Tertiary (Warm Amber) */
-  --color-tertiary: #f9a825;
+  --color-tertiary: #f59e0b; /* amber-500: Warm colors pop beautifully against cool emerald. */
 
-  /* Accent (Coral/Pink for high contrast) */
-  --color-accent: #f06292;
+  /* Accent (High Contrast Rose/Coral) */
+  --color-accent: #f43f5e;
 
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -56,8 +58,8 @@ button {
 
 html {
   scroll-behavior: smooth;
+  @apply text-default-text;
 }
-
 
 @utility scale-on-hover {
   @apply active:scale-120 lg:hover:scale-120;
@@ -148,3 +150,15 @@ a:visited::selection {
   color: auto;
   @apply bg-transparent;
 }
+
+/* Hero Pagination Dashing Logic */
+.custom-pagination .swiper-pagination-bullet {
+  @apply w-8 h-1 bg-white/30 rounded-full transition-all duration-500 cursor-pointer opacity-100;
+  margin: 0 !important;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  @apply w-16 bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.5)];
+}
+
+

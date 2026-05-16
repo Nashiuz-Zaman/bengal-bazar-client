@@ -19,7 +19,7 @@ export const LinkBtn = ({
 }: ILinkBtnProps) => {
   const allClasses = `
     flex items-center justify-center gap-2 w-max capitalize transition-all
-    rounded-md text-center font-medium focus:outline-none
+    rounded-2xl text-center font-medium focus:outline-none
     px-8 py-3 active:scale-98 ${className}
   `;
 

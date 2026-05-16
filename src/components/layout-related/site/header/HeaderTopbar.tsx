@@ -18,7 +18,7 @@ import { CompanyLogoBtn } from "@buttons/CompanyLogoBtn";
 import { OuterContainer } from "@containers/OuterContainer";
 import { BREAKPOINTS, useMediaQuery } from "@/hooks/useMediaQuery";
 import dynamic from "next/dynamic";
-import { categories } from "@/dummy-data/nav";
+import { categories } from "@/data/nav";
 
 const MobileCategoryNav = dynamic(() =>
   import("./blocks/MobileCategoryNav").then((mod) => mod.MobileCategoryNav),
@@ -69,7 +69,7 @@ export const HeaderTopbar = () => {
     <OuterContainer className="h-27 2md:h-20 grid grid-rows-2 grid-cols-3 2md:grid-cols-[1fr_2fr_1fr] 2md:grid-rows-1 items-center border-b border-neutral-100">
       {is2md && <MobileCategoryNav categories={categories} />}
 
-      <CompanyLogoBtn className="mx-auto! 2md:ml-0!" />
+      <CompanyLogoBtn className="mx-auto! 2md:ml-0! md:text-xl" />
 
       {/* Desktop search bar */}
       <HeaderProductsSearchbar<ISearchbarResultProduct>
@@ -81,7 +81,7 @@ export const HeaderTopbar = () => {
         modalClassName="productSearchbarModal"
       />
 
-      <div className="ml-auto flex items-center gap-4 font-medium text-sm order-2 2md:order-3">
+      <div className="ml-auto flex items-stretch gap-4 font-medium text-sm order-2 2md:order-3">
         {/* Auth / User menu */}
         {!isAuthenticated ? (
           <>
@@ -89,7 +89,7 @@ export const HeaderTopbar = () => {
               className="hover:underline flex-col items-center! gap-1!"
               href="/login"
             >
-              <LoginIcon className="text-xl" />
+              <LoginIcon className="text-3xl" />
               <span className="hidden lg:inline-block">Sign in</span>
             </LinkBtnTrans>
           </>
