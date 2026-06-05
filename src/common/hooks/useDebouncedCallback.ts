@@ -6,7 +6,7 @@ export const useDebouncedCallback = <T extends (...args: any[]) => void>(
 ) => {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // 2. The "Latest Ref" Pattern: Store the latest callback in a ref
+
   const callbackRef = useRef(callback);
 
   useEffect(() => {
@@ -22,12 +22,12 @@ export const useDebouncedCallback = <T extends (...args: any[]) => void>(
 
   const debouncedFn = useCallback(
     (...args: Parameters<T>) => {
-      cancel(); // Reuse the cancel logic here
+      cancel(); 
       timer.current = setTimeout(() => {
         callbackRef.current(...args);
       }, delay);
     },
-    [delay, cancel], // Notice 'callback' is NO LONGER a dependency!
+    [delay, cancel], 
   );
 
   useEffect(() => cancel, [cancel]);
