@@ -2,8 +2,8 @@
 
 import { createContext, ReactNode, useContext } from "react";
 import { UserRole } from "@/constants/user";
-import { useGetCurrentUserQuery } from "@/features/user/api/user.api.slice";
-import { IUser } from "@/features/user/types/user";
+import { useGetCurrentUserQuery } from "@/modules/user/api/user.api.slice";
+import { IUser } from "@/modules/user/types/user.types";
 
 export interface IAuthContext {
   user: Partial<IUser> | null;

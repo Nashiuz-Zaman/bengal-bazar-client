@@ -27,6 +27,7 @@ export const axiosBaseQuery =
         params,
         withCredentials: true,
       });
+
       return result.data;
     };
 
