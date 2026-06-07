@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosError } from "axios";
 import { BaseQueryFn } from "@reduxjs/toolkit/query";
-import { withRetry } from "@/utils/withRetry";
+import { withRetry } from "@/common/utils/withRetry";
 
 interface IAxiosBaseQueryArgs {
   url: string;
@@ -27,6 +27,7 @@ export const axiosBaseQuery =
         params,
         withCredentials: true,
       });
+
       return result.data;
     };
 

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { TAppDispatch } from "@/libs/redux/store";
-import { setBackdropOpen } from "@slices/backdropSlice";
+import { TAppDispatch } from "@/common/lib/redux/store";
+import { setBackdropOpen } from "@/common/lib/redux/slices/backdropSlice";
 
 export const useModal = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

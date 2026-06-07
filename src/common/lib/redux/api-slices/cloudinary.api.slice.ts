@@ -1,4 +1,4 @@
-import { baseApiSlice } from "./base.api.slice";
+import { baseApiSlice } from "../../../api/base.api.slice";
 
 export const cloudinaryApiSlice = baseApiSlice.injectEndpoints({
   endpoints: (builder) => ({

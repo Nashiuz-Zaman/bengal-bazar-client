@@ -1,5 +1,5 @@
-import { IApiResponse } from "@/types/shared";
-import { baseApiSlice } from "@/libs/redux/api-slices/base.api.slice";
+import { IApiResponse } from "@/common/types/common.type";
+import { baseApiSlice } from "@/common/api/base.api.slice";
 
 export const productCollectionApi = baseApiSlice.injectEndpoints({
   endpoints: (builder) => ({

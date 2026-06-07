@@ -29,9 +29,9 @@
       "@layout-related/*": ["./src/components/layout-related/*"],
       "@shared/*": ["./src/components/shared/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@api-slices/*": ["./src/libs/redux/api-slices/*"],
-      "@slices/*": ["./src/libs/redux/slices/*"],
-      "@providers/*": ["./src/providers/*"],
+      "@api-slices/*": ["src/common/lib/redux/api-slices/*"],
+      "@slices/*": ["src/common/lib/redux/slices/*"],
+      "@providers/*": ["src/common/providers/*"],
       "@utils/*": ["./src/utils/*"]
     }
   },

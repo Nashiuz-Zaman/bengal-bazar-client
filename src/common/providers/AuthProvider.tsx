@@ -2,10 +2,10 @@
 
 import { createContext, ReactNode, useContext } from "react";
 import { UserRole } from "@/constants/user";
-import { useGetCurrentUserQuery } from "@api-slices/auth.api.slice";
-import { IUser } from "@/types/user";
+import { useGetCurrentUserQuery } from "@/modules/user/api/user.api.slice";
+import { IUser } from "@/modules/user/types/user.types";
 
-export interface IAuthStateContext {
+export interface IAuthContext {
   user: Partial<IUser> | null;
   isLoading: boolean;
   role?: string;
@@ -14,9 +14,9 @@ export interface IAuthStateContext {
   isSuperAdmin: boolean;
 }
 
-export const AuthStateContext = createContext<IAuthStateContext | null>(null);
+export const AuthContext = createContext<IAuthContext | null>(null);
 
-export const AuthStateProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // Let RTK Query be the single source of truth
   const { data, isLoading, isError } = useGetCurrentUserQuery(undefined, {
     refetchOnReconnect: true,
@@ -29,7 +29,7 @@ export const AuthStateProvider = ({ children }: { children: ReactNode }) => {
   const isAdmin = role === UserRole.ADMIN;
   const isSuperAdmin = role === UserRole.SUPERADMIN;
 
-  const value: IAuthStateContext = {
+  const value: IAuthContext = {
     user,
     isLoading: isLoading,
     role,
@@ -38,14 +38,14 @@ export const AuthStateProvider = ({ children }: { children: ReactNode }) => {
     isSuperAdmin,
   };
 
-  return <AuthStateContext value={value}>{children}</AuthStateContext>;
+  return <AuthContext value={value}>{children}</AuthContext>;
 };
 
-export const useAuthState = (): IAuthStateContext => {
-  const context = useContext(AuthStateContext);
+export const useAuthState = (): IAuthContext => {
+  const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error("useAuthState must be used within an <AuthStateProvider>");
+    throw new Error("useAuthState must be used within an <AuthProvider>");
   }
 
   return context;

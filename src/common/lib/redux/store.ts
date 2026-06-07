@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { baseApiSlice } from "./api-slices/base.api.slice";
+import { baseApiSlice } from "../../api/base.api.slice";
 import backdropReducer from "./slices/backdropSlice";
 
 export const makeStore = () =>
